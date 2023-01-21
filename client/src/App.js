@@ -9,9 +9,7 @@ function App() {
     axios.get("/api/chats").then((response) => setMessages(response.data));
   }, []);
 
- console.log(message)
-
- 
+  console.log(message);
 
   return (
     <div className="App">
