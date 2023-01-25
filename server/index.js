@@ -18,7 +18,9 @@ app.get("/api/chats", (req, res) => {
   },);
 });
 
-
+app.post("/api/messages", (req, res) => {
+  
+})
 
 
 
