@@ -18,9 +18,28 @@ app.get("/api/chats", (req, res) => {
   },);
 });
 
+// creating chat mesaages 
 app.post("/api/messages", (req, res) => {
-  
+   res.send("Successfully connected with the server")
 })
+
+
+// get all the users 
+app.get("/api/users", (req, res) => {
+   console.log(' All users will be retrevied from this requests!')
+});
+
+
+//create user 
+app.post("/api/users", (req, res) => {
+  res.send("creating all the users...")
+})
+
+
+// getting the users by id 
+app.get("api/users/{id}", (req, res) => {
+  console.log(' All users will be retrevied from this requests!')
+});
 
 
 
