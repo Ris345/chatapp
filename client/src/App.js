@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 function App() {
   // craete a state here
   const [message, setMessages] = useState([]);
+  const [users, setUsers] = useState([]); 
   // get all  messages
   useEffect(() => {
     axios.get("/api/chats").then((response) => setMessages(response.data));
@@ -25,11 +26,11 @@ function App() {
 }
 
   
-  
-  
-  
   // all users  get get request api/users
-
+  useEffect(() => {
+    axios.get("/api/users").then((response) => setUsers(response.data));
+    console.log(users);
+  }, []);
 
 
   // create a user post request  api/users
