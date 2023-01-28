@@ -4,13 +4,16 @@ import { useEffect, useState } from "react";
 
 function App() {
   // craete a state here
-  const [message, setMessages] = useState([]);
+  const [allmessage, setallMessages] = useState([]);
+  const [messages, setMessages] = useState([]); 
   const [users, setUsers] = useState([]); 
+  const [allUsers, setallUsers] = useState([]); 
+
   // get all  messages
   useEffect(() => {
-    axios.get("/api/chats").then((response) => setMessages(response.data));
+    axios.get("/api/chats").then((response) => setallMessages(response.data));
   }, []);
-
+console.log("GET REQUEST 1:", allmessage); 
   // create  post request messages api/messages 
    // only make a post request when the user clicks the button
   const createChat = () => {
@@ -18,28 +21,30 @@ function App() {
        messages: 'Hello there friend'
     })
     .then(function (response) {
-      console.log(response);
+      console.log( "POST REQUEST 1:",response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
 }
 
+
+
   
   // all users  get get request api/users
   useEffect(() => {
-    axios.get("/api/users").then((response) => setUsers(response.data));
-    console.log(users);
+    axios.get("/api/users").then((response) => setallUsers(response.data));
+    console.log("GET REQUEST 2:", users); 
   }, []);
 
 
   // create a user post request  api/users
   const createUsers = () => {
-    axios.post('/api/users', {
+    axios.post('/api/createusers', {
        messages: 'Hello there friend'
     })
     .then(function (response) {
-      console.log(response);
+      console.log("POST REQUEST 2:", response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -48,12 +53,11 @@ function App() {
 
   // get single  user  api/users/{id}
   useEffect(() => {
-    axios.get("/api/users/{id}").then((response) => setUsers(response.data));
-    console.log(users);
+    axios.get("/api/users/id").then((response) => setUsers(response.data));
+    console.log( "GET REQUEST 2:", users);
   }, []);
 
-  console.log(message);
-
+ 
   return (
     <div className="App">
       <div className="main-chat">
