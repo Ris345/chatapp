@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3002;
+const socket = require("socket.io");
+
 
 app.get("/api/chats", (req, res) => {
   res.json({
@@ -42,6 +44,10 @@ app.get("/api/users/id", (req, res) => {
   console.log(" All users will be retrevied from this requests!");
 });
 
-app.listen(3002, () => {
+
+const server = app.listen(3002, () => {
   console.log(`Example app listening on port ${port}`);
+  console.log(`http://localhost:${port}`)
 });
+
+
