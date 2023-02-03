@@ -2,6 +2,25 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3002;
 const socket = require("socket.io");
+const { Client } = require('pg');
+
+const connectionString = "postgres://user:password@host:port/database";
+
+
+const client = new Client({
+  connectionString: connectionString
+});
+
+//client.connect()
+
+
+
+
+
+
+
+
+
 
 
 app.get("/api/chats", (req, res) => {
@@ -23,13 +42,15 @@ app.post("/api/messages", (req, res) => {
   //res.send("Successfully connected with the server");
   const data = req.body;
   // Do something with the data
-   res.json({'Messages' : 'This is a test'}) 
+  res.json({ Messages: "This is a test" });
 });
+
 
 // get all the users
 app.get("/api/users", (req, res) => {
   res.send({ name: "RishavA", currentuser: "You" });
 });
+
 
 //create user
 app.post("/api/createusers", (req, res) => {
@@ -39,15 +60,13 @@ app.post("/api/createusers", (req, res) => {
   res.json({ message: "Data received" });
 });
 
+
 // getting the users by id
 app.get("/api/users/id", (req, res) => {
   console.log(" All users will be retrevied from this requests!");
 });
 
-
 const server = app.listen(3002, () => {
   console.log(`Example app listening on port ${port}`);
-  console.log(`http://localhost:${port}`)
+  console.log(`http://localhost:${port}`);
 });
-
-
