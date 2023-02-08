@@ -4,23 +4,20 @@ const port = process.env.PORT || 3002;
 const socket = require("socket.io");
 const { Client } = require('pg');
 
-const connectionString = "postgres://adminRish@:0423@host:5432/chat_db";
-
 
 const client = new Client({
-  connectionString: connectionString
+    user: 'postgres',
+    host: 'localhost',
+    database: 'chat_db',
+    password: '0423',
+    port: 5432,
 });
 
+client.connect();
+
+
+
 //client.connect()
-
-
-
-
-
-
-
-
-
 
 
 app.get("/api/chats", (req, res) => {
